@@ -5512,6 +5512,7 @@ GameObject:
   - component: {fileID: 1872102582}
   - component: {fileID: 1872102583}
   - component: {fileID: 1872102584}
+  - component: {fileID: 1872102585}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -5585,6 +5586,7 @@ MonoBehaviour:
   enemiesPerSecond: 0.5
   timeBetweenWafes: 2
   difficultyScalingFactor: 0.75
+  enemiesPerSecondCap: 15
 --- !u!114 &1872102584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5604,6 +5606,18 @@ MonoBehaviour:
   - name: New Turret
     cost: 150
     prefab: {fileID: 3998035525008835453, guid: ef2376fc12d386947be75fe8e6ce4fa7, type: 3}
+--- !u!114 &1872102585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872102579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f700d3e176a9a4f48a2c18d585dcf8b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1886939193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6549,8 +6563,33 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1872102584}
+    - target: {fileID: 8800663961275696012, guid: f953669561f0cf84a9079ce1de175169, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800663961275696012, guid: f953669561f0cf84a9079ce1de175169, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800663961275696012, guid: f953669561f0cf84a9079ce1de175169, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800663961275696012, guid: f953669561f0cf84a9079ce1de175169, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800663961275696012, guid: f953669561f0cf84a9079ce1de175169, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800663961275696012, guid: f953669561f0cf84a9079ce1de175169, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 805707187357616639, guid: f953669561f0cf84a9079ce1de175169, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f953669561f0cf84a9079ce1de175169, type: 3}
