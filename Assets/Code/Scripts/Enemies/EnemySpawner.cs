@@ -4,6 +4,7 @@ using System.Globalization;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -18,23 +19,28 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float timeBetweenWafes = 5f;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
     [SerializeField] private float enemiesPerSecondCap = 15f;
+    [SerializeField] private GameObject gameOverHover;
+    [SerializeField] private GameObject victoryHover;
 
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new UnityEvent();
 
-    private int currentWave = 1;
     private float timeSinceLastSpawn;
     private int enemiesAlive;
     private int enemiesLeftToSpawn;
     private float eps; // Enemies Per Second - Для усложнения игры. (Монстры выходят чаще)
     private bool isSpawning = false;
 
+
+    public static EnemySpawner main;
+    public int currentWave = 1;
+
     private List<GameObject> spawnedEnemies = new List<GameObject>();
 
     private void Awake()
     {
         onEnemyDestroy.AddListener(EnemyDestroyed);
- 
+        main = this;
     }
 
     private void Start()
@@ -62,6 +68,16 @@ public class EnemySpawner : MonoBehaviour
         {
             EndWave();
         }
+    }
+
+    public void OpenGameOverHover()
+    {
+        gameOverHover.SetActive(true);
+    }
+
+    public void OpenVictoryHover()
+    {
+        victoryHover.SetActive(true);
     }
 
     private void EnemyDestroyed()
@@ -119,6 +135,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void Victory()
     {
+        OpenVictoryHover();
+
         isSpawning = false;
         timeSinceLastSpawn = 0f;
         currentWave++;
@@ -127,6 +145,8 @@ public class EnemySpawner : MonoBehaviour
 
     public void GameOver()
     {
+        OpenGameOverHover();
+
         isSpawning = false;
         timeSinceLastSpawn = 0f;
         currentWave++;
