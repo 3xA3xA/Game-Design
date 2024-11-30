@@ -38,11 +38,11 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Walls
     uniqueID: 3171413245
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Turrets
     uniqueID: 437312103

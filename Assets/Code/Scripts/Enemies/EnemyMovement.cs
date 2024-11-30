@@ -6,10 +6,13 @@ public class EnemyMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private EnemySpawner en;
+
+    Animator animator;
 
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 2f;
+
+    private EnemySpawner en;
 
     private Transform target;
     private int pathIndex = 0;
@@ -20,6 +23,8 @@ public class EnemyMovement : MonoBehaviour
     {
         baseSpeed = moveSpeed;
         target = LevelManager.main.path[pathIndex];
+
+        animator = GetComponent<Animator>();
 
         if (en == null) // :)
         {
@@ -71,6 +76,19 @@ public class EnemyMovement : MonoBehaviour
         else
         {
             rb.velocity = direction.normalized * moveSpeed;
+
+            // Flip the character sprite based on the direction
+            if (rb.velocity.x < 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 1); // Flip to the left
+            }
+            else if (rb.velocity.x > 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1); // Flip to the right
+            }
+
+            animator.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
         }
     }
+
 }

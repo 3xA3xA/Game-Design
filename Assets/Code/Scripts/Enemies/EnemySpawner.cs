@@ -61,6 +61,7 @@ public class EnemySpawner : MonoBehaviour
             enemiesLeftToSpawn--;
             enemiesAlive++;
             timeSinceLastSpawn = 0f;
+
         }
 
 
@@ -101,6 +102,8 @@ public class EnemySpawner : MonoBehaviour
         currentWave++;
         //StartCoroutine(StartWave());
 
+        if ((totalWaves <= 0)) StartCoroutine(StartWave());
+
         if (currentWave > totalWaves) { Victory(); }
         else
         {
@@ -135,6 +138,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Victory()
     {
+        if (totalWaves <= 0) return;
         OpenVictoryHover();
 
         isSpawning = false;
@@ -145,6 +149,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void GameOver()
     {
+        if (totalWaves <= 0) return;
         OpenGameOverHover();
 
         isSpawning = false;

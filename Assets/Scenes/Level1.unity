@@ -877,7 +877,7 @@ Transform:
   m_GameObject: {fileID: 268463111}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.25, y: 6.1, z: 0}
+  m_LocalPosition: {x: -9.49, y: 6.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3688,7 +3688,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1123554051
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -5590,8 +5590,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 2016583810188610782, guid: 62008d1a90d560c45ad3480be3346c66, type: 3}
-  totalWaves: 4
+  - {fileID: 5564256563471534814, guid: c6fcc1f5e200286449e4f9421bf466e7, type: 3}
+  totalWaves: 2
   baseEnemies: 8
   enemiesPerSecond: 0.5
   timeBetweenWafes: 2
