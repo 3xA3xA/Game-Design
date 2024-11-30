@@ -5512,7 +5512,6 @@ GameObject:
   - component: {fileID: 1872102582}
   - component: {fileID: 1872102583}
   - component: {fileID: 1872102584}
-  - component: {fileID: 1872102585}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -5606,18 +5605,6 @@ MonoBehaviour:
   - name: New Turret
     cost: 150
     prefab: {fileID: 3998035525008835453, guid: ef2376fc12d386947be75fe8e6ce4fa7, type: 3}
---- !u!114 &1872102585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1872102579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f700d3e176a9a4f48a2c18d585dcf8b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1886939193
 PrefabInstance:
   m_ObjectHideFlags: 0
