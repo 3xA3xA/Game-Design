@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
 
 
     [Header("Attribute")]
+    [SerializeField] private int totalWaves = 1;
     [SerializeField] private int baseEnemies = 8;
     [SerializeField] private float enemiesPerSecond = 0.5f;
     [SerializeField] private float timeBetweenWafes = 5f;
@@ -25,12 +26,15 @@ public class EnemySpawner : MonoBehaviour
     private float timeSinceLastSpawn;
     private int enemiesAlive;
     private int enemiesLeftToSpawn;
-    private float eps; // Enemies Per Second - Для усложнения игры. (Монстры ыходят чаще)
+    private float eps; // Enemies Per Second - Для усложнения игры. (Монстры выходят чаще)
     private bool isSpawning = false;
+
+    private List<GameObject> spawnedEnemies = new List<GameObject>();
 
     private void Awake()
     {
         onEnemyDestroy.AddListener(EnemyDestroyed);
+ 
     }
 
     private void Start()
@@ -79,7 +83,13 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = false;
         timeSinceLastSpawn = 0f;
         currentWave++;
-        StartCoroutine(StartWave());
+        //StartCoroutine(StartWave());
+
+        if (currentWave > totalWaves) { Victory(); }
+        else
+        {
+            StartCoroutine(StartWave());
+        }
     }
 
     private int EnemiesPerWave()
@@ -99,8 +109,38 @@ public class EnemySpawner : MonoBehaviour
         int index = Random.Range(0, enemyPrefabs.Length);
 
         GameObject prefabToSpawn = enemyPrefabs[index]; //Так себе идея. Пример - 2 слота(обычный моб) 1 слот(большой моб) шансы - 2 к 1. 
-        Vector3 spawnPosition = LevelManager.main.startPoint.position; 
+        Vector3 spawnPosition = LevelManager.main.startPoint.position;
         spawnPosition.z = 0f;
-        Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+        //Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+
+        GameObject enemy = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity); 
+        spawnedEnemies.Add(enemy); // Add the spawned enemy to the list
+    }
+
+    private void Victory()
+    {
+        isSpawning = false;
+        timeSinceLastSpawn = 0f;
+        currentWave++;
+        Debug.Log("WIn!");
+    }
+
+    public void GameOver()
+    {
+        isSpawning = false;
+        timeSinceLastSpawn = 0f;
+        currentWave++;
+        Debug.Log("Lose!");
+
+        // Destroy all enemies on the map
+        foreach (GameObject enemy in spawnedEnemies)
+        {
+            if (enemy != null)
+            {
+                Destroy(enemy);
+            }
+        }
+
+        spawnedEnemies.Clear(); // Clear the list after destroying all enemies
     }
 }

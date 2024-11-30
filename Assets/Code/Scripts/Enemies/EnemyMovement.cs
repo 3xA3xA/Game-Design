@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private EnemySpawner en;
 
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 2f;
@@ -19,6 +20,11 @@ public class EnemyMovement : MonoBehaviour
     {
         baseSpeed = moveSpeed;
         target = LevelManager.main.path[pathIndex];
+
+        if (en == null) // :)
+        {
+            en = FindObjectOfType<EnemySpawner>();
+        }
     }
 
     private void Update()
@@ -29,8 +35,10 @@ public class EnemyMovement : MonoBehaviour
 
             if (pathIndex == LevelManager.main.path.Length) 
             {
-                EnemySpawner.onEnemyDestroy.Invoke();
+                EnemySpawner.onEnemyDestroy.Invoke();           
                 Destroy(gameObject);
+
+                en.GameOver();
                 return;
             }
             else
