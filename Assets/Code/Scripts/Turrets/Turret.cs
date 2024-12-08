@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 public class Turret : MonoBehaviour
@@ -61,7 +62,7 @@ public class Turret : MonoBehaviour
         }
 
         Vector3 firingPosition = firingPoint.position;
-        firingPosition.z = 0f; //ќп€ть мен€ю коорд
+        firingPosition.z = 0f; // ќп€ть мен€ю координаты
 
         GameObject bulletObj = Instantiate(bulletPrefab, firingPosition, Quaternion.identity);
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
@@ -76,19 +77,17 @@ public class Turret : MonoBehaviour
         }
     }
 
-
     private void RotateTowardsTarget()
     {
-        float angel = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
+        float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
 
-        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angel));
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
     private void FindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)
-        transform.position, 0f, enemyMask);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemyMask);
 
         if (hits.Length > 0)
         {
@@ -101,9 +100,11 @@ public class Turret : MonoBehaviour
         return Vector2.Distance(target.position, transform.position) <= targetingRange;
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
     }
+#endif
 }

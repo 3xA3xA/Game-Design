@@ -1,8 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class TurretSlowmo : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class TurretSlowmo : MonoBehaviour
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 2.5f;
-    [SerializeField] private float aps = 4f; //Attack Per Second
+    [SerializeField] private float aps = 4f; // Attack Per Second
     [SerializeField] private float freezeTime = 1f;
 
     private float timeUntilFire;
@@ -29,17 +29,16 @@ public class TurretSlowmo : MonoBehaviour
 
     private void FreezeEnemies()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)
-            transform.position, 0f, enemyMask);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemyMask);
 
-        if(hits.Length > 0)
+        if (hits.Length > 0)
         {
             for (int i = 0; i < hits.Length; i++)
             {
                 RaycastHit2D hit = hits[i];
 
                 EnemyMovement em = hit.transform.GetComponent<EnemyMovement>();
-                em.UpdateSpeed(0.5f); // убрать выше.
+                em.UpdateSpeed(0.5f); // Уменьшите скорость врага
 
                 StartCoroutine(ResetEnemySpeed(em));
             }
@@ -53,9 +52,11 @@ public class TurretSlowmo : MonoBehaviour
         em.ResetSpeed();
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
     }
+#endif
 }
