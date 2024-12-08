@@ -3687,8 +3687,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1123554051
-  m_SortingLayer: -1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -5591,10 +5591,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 5564256563471534814, guid: c6fcc1f5e200286449e4f9421bf466e7, type: 3}
-  totalWaves: 2
+  totalWaves: 3
   baseEnemies: 8
-  enemiesPerSecond: 0.5
-  timeBetweenWafes: 2
+  enemiesPerSecond: 1
+  timeBetweenWafes: 3
   difficultyScalingFactor: 0.75
   enemiesPerSecondCap: 15
   gameOverHover: {fileID: 195847345}
@@ -5616,9 +5616,6 @@ MonoBehaviour:
   - name: Basic Turret
     cost: 100
     prefab: {fileID: 3998035525008835453, guid: daf252ac6165dba4e9abc239b756ad82, type: 3}
-  - name: New Turret
-    cost: 150
-    prefab: {fileID: 3998035525008835453, guid: ef2376fc12d386947be75fe8e6ce4fa7, type: 3}
 --- !u!1001 &1886939193
 PrefabInstance:
   m_ObjectHideFlags: 0

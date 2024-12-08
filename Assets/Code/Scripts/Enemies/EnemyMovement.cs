@@ -16,13 +16,31 @@ public class EnemyMovement : MonoBehaviour
 
     private Transform target;
     private int pathIndex = 0;
+    private Transform[] currentPath;
+
 
     private float baseSpeed;
+
+    //private void Start()
+    //{
+    //    baseSpeed = moveSpeed;
+    //    target = LevelManager.main.path[pathIndex];
+
+    //    animator = GetComponent<Animator>();
+
+    //    if (en == null) // :)
+    //    {
+    //        en = FindObjectOfType<EnemySpawner>();
+    //    }
+    //}
 
     private void Start()
     {
         baseSpeed = moveSpeed;
-        target = LevelManager.main.path[pathIndex];
+
+        // Выбор пути
+        currentPath = Random.Range(0, 2) == 0 ? LevelManager.main.path1 : LevelManager.main.path2;
+        target = currentPath[pathIndex];
 
         animator = GetComponent<Animator>();
 
@@ -32,15 +50,37 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+
+    //private void Update()
+    //{
+    //    if (Vector2.Distance(target.position, transform.position) <= 0.1f)
+    //    {
+    //        pathIndex++;
+
+    //        if (pathIndex == LevelManager.main.path.Length) 
+    //        {
+    //            EnemySpawner.onEnemyDestroy.Invoke();           
+    //            Destroy(gameObject);
+
+    //            en.GameOver();
+    //            return;
+    //        }
+    //        else
+    //        {
+    //            target = LevelManager.main.path[pathIndex];
+    //        }
+    //    }
+    //}
+
     private void Update()
     {
         if (Vector2.Distance(target.position, transform.position) <= 0.1f)
         {
             pathIndex++;
 
-            if (pathIndex == LevelManager.main.path.Length) 
+            if (pathIndex == currentPath.Length)
             {
-                EnemySpawner.onEnemyDestroy.Invoke();           
+                EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
 
                 en.GameOver();
@@ -48,10 +88,11 @@ public class EnemyMovement : MonoBehaviour
             }
             else
             {
-                target = LevelManager.main.path[pathIndex];
+                target = currentPath[pathIndex];
             }
         }
     }
+
 
     public void UpdateSpeed(float newSpeed)
     {

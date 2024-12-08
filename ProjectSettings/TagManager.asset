@@ -44,6 +44,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Shadow
+    uniqueID: 1863670571
+    locked: 0
+  - name: WorldObject
+    uniqueID: 2582223895
+    locked: 0
   - name: Turrets
     uniqueID: 437312103
+    locked: 0
+  - name: Enemy
+    uniqueID: 3168328957
+    locked: 0
+  - name: UI
+    uniqueID: 2939434241
+    locked: 0
+  - name: UI_text
+    uniqueID: 2234403069
+    locked: 0
+  - name: UI_text_2
+    uniqueID: 3787138971
     locked: 0

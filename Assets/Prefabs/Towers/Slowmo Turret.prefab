@@ -80,9 +80,9 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  targetingRange: 2.5
-  aps: 4
-  freezeTime: 1
+  targetingRange: 1
+  aps: 2
+  freezeTime: 0.5
 --- !u!1 &7894782878708872334
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 437312103
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 2c82a4f5bfac1004992b2b3c9db3674a, type: 3}
   m_Color: {r: 0, g: 0.6748581, b: 1, a: 1}
@@ -238,7 +238,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 437312103
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dd6767e4ac878b04aa4c4c83fe6759e3, type: 3}
   m_Color: {r: 0, g: 0.29786587, b: 1, a: 1}

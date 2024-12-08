@@ -10,6 +10,10 @@ public class EnemySpawner : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject[] enemyPrefabs;
+    [SerializeField] private GameObject[] emptyStars; // ссылки на пустые звезды
+    [SerializeField] private GameObject[] filledStars; // ссылки на заполненные звезды
+
+
 
 
     [Header("Attribute")]
@@ -95,21 +99,61 @@ public class EnemySpawner : MonoBehaviour
         eps = EnemiesPerSecond();
     }
 
+    //private void EndWave()
+    //{
+    //    isSpawning = false;
+    //    timeSinceLastSpawn = 0f;
+    //    currentWave++;
+    //    //StartCoroutine(StartWave());
+
+    //    if ((totalWaves <= 0)) StartCoroutine(StartWave());
+
+    //    if (currentWave > totalWaves) { Victory(); }
+    //    else
+    //    {
+    //        StartCoroutine(StartWave());
+    //    }
+    //}
+
     private void EndWave()
     {
         isSpawning = false;
         timeSinceLastSpawn = 0f;
         currentWave++;
-        //StartCoroutine(StartWave());
 
-        if ((totalWaves <= 0)) StartCoroutine(StartWave());
+        if (totalWaves <= 0) StartCoroutine(StartWave());
 
-        if (currentWave > totalWaves) { Victory(); }
+        if (currentWave > totalWaves)
+        {
+            Victory();
+        }
         else
         {
             StartCoroutine(StartWave());
         }
+
+        // Обновить состояние звезд
+        UpdateStars();
     }
+
+    private void UpdateStars()
+    {
+        // Скрыть пустые звезды и показать заполненные звезды на основании пройденных волн
+        for (int i = 0; i < currentWave - 1 && i < emptyStars.Length && i < filledStars.Length; i++)
+        {
+            if (emptyStars[i] != null)
+            {
+                emptyStars[i].SetActive(false); // скрыть пустую звезду
+            }
+
+            if (filledStars[i] != null)
+            {
+                filledStars[i].SetActive(true); // показать заполненную звезду
+            }
+        }
+    }
+
+
 
     private int EnemiesPerWave()
     {
