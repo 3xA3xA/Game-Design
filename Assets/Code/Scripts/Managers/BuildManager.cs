@@ -11,7 +11,7 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private Tower[] towers;
     [SerializeField] private Button[] towerButtons; // Добавим ссылки на кнопки
 
-    private int selectedTower = 0;
+    public int selectedTower = 0; // Сделаем это поле публичным
 
     private void Awake()
     {

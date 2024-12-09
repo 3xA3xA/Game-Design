@@ -8,12 +8,17 @@ using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
+    //[SerializeField] private GameObject[] enemyPrefabs; - Старое добавление мобов для спавна
+
     [Header("References")]
-    [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private GameObject[] emptyStars; // ссылки на пустые звезды
     [SerializeField] private GameObject[] filledStars; // ссылки на заполненные звезды
 
 
+    [Header("Mob Waves")]
+    [SerializeField] private GameObject[] wave1Enemies;
+    [SerializeField] private GameObject[] wave2Enemies;
+    [SerializeField] private GameObject[] wave3Enemies;
 
 
     [Header("Attribute")]
@@ -90,30 +95,24 @@ public class EnemySpawner : MonoBehaviour
         enemiesAlive--;
     }
 
+    //private IEnumerator StartWave()
+    //{
+    //    yield return new WaitForSeconds(timeBetweenWafes);
+
+    //    isSpawning = true;
+    //    enemiesLeftToSpawn = EnemiesPerWave();
+    //    eps = EnemiesPerSecond();
+    //}
+
     private IEnumerator StartWave()
     {
         yield return new WaitForSeconds(timeBetweenWafes);
 
         isSpawning = true;
-        enemiesLeftToSpawn = EnemiesPerWave();
+        enemiesLeftToSpawn = GetEnemiesForCurrentWave().Length;
         eps = EnemiesPerSecond();
     }
 
-    //private void EndWave()
-    //{
-    //    isSpawning = false;
-    //    timeSinceLastSpawn = 0f;
-    //    currentWave++;
-    //    //StartCoroutine(StartWave());
-
-    //    if ((totalWaves <= 0)) StartCoroutine(StartWave());
-
-    //    if (currentWave > totalWaves) { Victory(); }
-    //    else
-    //    {
-    //        StartCoroutine(StartWave());
-    //    }
-    //}
 
     private void EndWave()
     {
@@ -167,18 +166,45 @@ public class EnemySpawner : MonoBehaviour
         return Mathf.Clamp(enemiesPerSecond * Mathf.Pow(currentWave, difficultyScalingFactor), 0f, enemiesPerSecondCap);
     }
 
+    //private void SpawnEnemy()
+    //{
+    //    int index = Random.Range(0, enemyPrefabs.Length);
+
+    //    GameObject prefabToSpawn = enemyPrefabs[index]; //Так себе идея. Пример - 2 слота(обычный моб) 1 слот(большой моб) шансы - 2 к 1. 
+    //    Vector3 spawnPosition = LevelManager.main.startPoint.position;
+    //    spawnPosition.z = 0f;
+
+    //    GameObject enemy = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity); 
+    //    spawnedEnemies.Add(enemy);
+    //}
+
     private void SpawnEnemy()
     {
-        int index = Random.Range(0, enemyPrefabs.Length);
-
-        GameObject prefabToSpawn = enemyPrefabs[index]; //Так себе идея. Пример - 2 слота(обычный моб) 1 слот(большой моб) шансы - 2 к 1. 
+        GameObject[] enemiesForWave = GetEnemiesForCurrentWave();
+        int index = enemiesForWave.Length - enemiesLeftToSpawn;
+        GameObject prefabToSpawn = enemiesForWave[index];
         Vector3 spawnPosition = LevelManager.main.startPoint.position;
         spawnPosition.z = 0f;
-        //Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
 
-        GameObject enemy = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity); 
-        spawnedEnemies.Add(enemy); // Add the spawned enemy to the list
+        GameObject enemy = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+        spawnedEnemies.Add(enemy);
     }
+
+    private GameObject[] GetEnemiesForCurrentWave()
+    {
+        switch (currentWave)
+        {
+            case 1:
+                return wave1Enemies;
+            case 2:
+                return wave2Enemies;
+            case 3:
+                return wave3Enemies;
+            default:
+                return new GameObject[0];
+        }
+    }
+
 
     private void Victory()
     {
@@ -201,7 +227,7 @@ public class EnemySpawner : MonoBehaviour
         currentWave++;
         Debug.Log("Lose!");
 
-        // Destroy all enemies on the map
+        // Удалить всех мобов с карты
         foreach (GameObject enemy in spawnedEnemies)
         {
             if (enemy != null)
@@ -210,6 +236,6 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        spawnedEnemies.Clear(); // Clear the list after destroying all enemies
+        spawnedEnemies.Clear(); // Очистка списка
     }
 }

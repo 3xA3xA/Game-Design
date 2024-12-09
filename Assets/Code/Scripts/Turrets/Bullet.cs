@@ -20,11 +20,14 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!target) return;
+        if (!target) return;
 
         Vector2 direction = (target.position - transform.position).normalized;
 
         rb.velocity = direction * bulletSpeed;
+
+        // Поворот пули в направлении полета
+        RotateTowardsDirection(direction);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -32,5 +35,11 @@ public class Bullet : MonoBehaviour
         collision.gameObject.GetComponent<Health>().TakeDamage(bulletDamage);
         //Берем ХП у противника 
         Destroy(gameObject);
+    }
+
+    private void RotateTowardsDirection(Vector2 direction)
+    {
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 }
