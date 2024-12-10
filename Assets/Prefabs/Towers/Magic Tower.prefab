@@ -323,8 +323,8 @@ MonoBehaviour:
   rotationSpeed: 1000
   bps: 2
   slowmoRange: 2.5
-  aps: 4
-  freezeTime: 1
+  aps: 2
+  freezeTime: 0.4
 --- !u!95 &251947329569646654
 Animator:
   serializedVersion: 5

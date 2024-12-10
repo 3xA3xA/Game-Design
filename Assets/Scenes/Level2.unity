@@ -2077,7 +2077,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1881402021, guid: bb47845607c413146bf4f552bbc00446, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -2532,7 +2532,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -867347624, guid: bb47845607c413146bf4f552bbc00446, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -4670,13 +4670,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towers:
   - name: Basic Tower
-    cost: 50
+    cost: 20
     prefab: {fileID: 8445560699007186825, guid: 99763d40511a92644bbb8ba0bada36ff, type: 3}
   - name: Archer Tower
-    cost: 100
+    cost: 40
     prefab: {fileID: 8445560699007186825, guid: 762bffade78301b49b6fc9f0e6e2a345, type: 3}
   - name: Magic Tower
-    cost: 200
+    cost: 60
     prefab: {fileID: 8445560699007186825, guid: ad70f12e2392f074cb030cb491bbed81, type: 3}
   towerButtons:
   - {fileID: 1624442471}
@@ -4707,8 +4707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63bfcfb31841f9f48b4d3eb23dc6fa40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 1639626422944887458, guid: 23419ae3e0cc5d149a1e220d26fb4693, type: 3}
   emptyStars:
   - {fileID: 1624442479}
   - {fileID: 1624442478}
@@ -4717,12 +4715,24 @@ MonoBehaviour:
   - {fileID: 1624442476}
   - {fileID: 1624442475}
   - {fileID: 1624442474}
+  wave1Enemies:
+  - {fileID: 2163180060013588793, guid: eff505621fd10b04ba4a0451c5bb176b, type: 3}
+  - {fileID: 2163180060013588793, guid: eff505621fd10b04ba4a0451c5bb176b, type: 3}
+  wave2Enemies:
+  - {fileID: 2163180060013588793, guid: eff505621fd10b04ba4a0451c5bb176b, type: 3}
+  - {fileID: 2163180060013588793, guid: eff505621fd10b04ba4a0451c5bb176b, type: 3}
+  - {fileID: 2163180060013588793, guid: eff505621fd10b04ba4a0451c5bb176b, type: 3}
+  - {fileID: 6094057151279691036, guid: 00dc477a27bdb3a4cab0d3ad6e74416a, type: 3}
+  - {fileID: 6094057151279691036, guid: 00dc477a27bdb3a4cab0d3ad6e74416a, type: 3}
+  wave3Enemies:
+  - {fileID: 6094057151279691036, guid: 00dc477a27bdb3a4cab0d3ad6e74416a, type: 3}
+  - {fileID: 6094057151279691036, guid: 00dc477a27bdb3a4cab0d3ad6e74416a, type: 3}
+  - {fileID: 6094057151279691036, guid: 00dc477a27bdb3a4cab0d3ad6e74416a, type: 3}
+  - {fileID: 1639626422944887458, guid: 23419ae3e0cc5d149a1e220d26fb4693, type: 3}
+  - {fileID: 1639626422944887458, guid: 23419ae3e0cc5d149a1e220d26fb4693, type: 3}
   totalWaves: 3
-  baseEnemies: 1
-  enemiesPerSecond: 0.5
-  timeBetweenWafes: 2
-  difficultyScalingFactor: 0
-  enemiesPerSecondCap: 15
+  enemiesPerSecond: 1
+  timeBetweenWafes: 4
   gameOverHover: {fileID: 1624442473}
   victoryHover: {fileID: 1624442472}
   currentWave: 1
@@ -4753,7 +4763,7 @@ MonoBehaviour:
   - {fileID: 2081689122}
   - {fileID: 1990854781}
   - {fileID: 1115343282}
-  currency: 7567
+  currency: 40
 --- !u!4 &1157165335
 Transform:
   m_ObjectHideFlags: 0
@@ -8995,7 +9005,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1881402021, guid: bb47845607c413146bf4f552bbc00446, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9228,10 +9238,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 106163590595933448, guid: 6724630b82542bb449454d76ed007739, type: 3}
+      propertyPath: m_text
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 106163590595933448, guid: 6724630b82542bb449454d76ed007739, type: 3}
+      propertyPath: m_fontSize
+      value: 22.95
+      objectReference: {fileID: 0}
     - target: {fileID: 236140066538357365, guid: 6724630b82542bb449454d76ed007739, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1157165332}
+    - target: {fileID: 494768782665685405, guid: 6724630b82542bb449454d76ed007739, type: 3}
+      propertyPath: m_text
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 762804187603705107, guid: 6724630b82542bb449454d76ed007739, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -9262,7 +9284,7 @@ PrefabInstance:
       objectReference: {fileID: 1157165332}
     - target: {fileID: 3878384112293534947, guid: 6724630b82542bb449454d76ed007739, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level1
+      value: Level2
       objectReference: {fileID: 0}
     - target: {fileID: 4493106365639830162, guid: 6724630b82542bb449454d76ed007739, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -9319,6 +9341,14 @@ PrefabInstance:
     - target: {fileID: 7075592795416281676, guid: 6724630b82542bb449454d76ed007739, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435146854617699913, guid: 6724630b82542bb449454d76ed007739, type: 3}
+      propertyPath: m_text
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435146854617699913, guid: 6724630b82542bb449454d76ed007739, type: 3}
+      propertyPath: m_fontSize
+      value: 22.95
       objectReference: {fileID: 0}
     - target: {fileID: 7825321451644542077, guid: 6724630b82542bb449454d76ed007739, type: 3}
       propertyPath: m_Camera

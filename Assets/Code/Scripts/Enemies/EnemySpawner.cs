@@ -22,12 +22,11 @@ public class EnemySpawner : MonoBehaviour
 
 
     [Header("Attribute")]
-    [SerializeField] private int totalWaves = 1;
-    [SerializeField] private int baseEnemies = 8;
+    [SerializeField] private int totalWaves = 3;
     [SerializeField] private float enemiesPerSecond = 0.5f;
     [SerializeField] private float timeBetweenWafes = 5f;
-    [SerializeField] private float difficultyScalingFactor = 0.75f;
-    [SerializeField] private float enemiesPerSecondCap = 15f;
+
+    [Header("UI")]
     [SerializeField] private GameObject gameOverHover;
     [SerializeField] private GameObject victoryHover;
 
@@ -95,32 +94,28 @@ public class EnemySpawner : MonoBehaviour
         enemiesAlive--;
     }
 
-    //private IEnumerator StartWave()
-    //{
-    //    yield return new WaitForSeconds(timeBetweenWafes);
-
-    //    isSpawning = true;
-    //    enemiesLeftToSpawn = EnemiesPerWave();
-    //    eps = EnemiesPerSecond();
-    //}
-
     private IEnumerator StartWave()
     {
         yield return new WaitForSeconds(timeBetweenWafes);
 
         isSpawning = true;
         enemiesLeftToSpawn = GetEnemiesForCurrentWave().Length;
-        eps = EnemiesPerSecond();
+        eps = enemiesPerSecond;
     }
 
 
     private void EndWave()
     {
+        if (totalWaves <= 0)
+        {
+            currentWave = 1;
+            StartCoroutine(StartWave());
+            return;
+        }          
+
         isSpawning = false;
         timeSinceLastSpawn = 0f;
         currentWave++;
-
-        if (totalWaves <= 0) StartCoroutine(StartWave());
 
         if (currentWave > totalWaves)
         {
@@ -152,32 +147,6 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-
-
-    private int EnemiesPerWave()
-    {
-        //С каждой новой волной увеличивается кол-во врагов на Уровень волны * Модификатор сложности.
-        return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, difficultyScalingFactor));
-    }
-
-    private float EnemiesPerSecond()
-    {
-        //С каждой новой волной увеличивается кол-во врагов на Уровень волны * Модификатор сложности.
-        return Mathf.Clamp(enemiesPerSecond * Mathf.Pow(currentWave, difficultyScalingFactor), 0f, enemiesPerSecondCap);
-    }
-
-    //private void SpawnEnemy()
-    //{
-    //    int index = Random.Range(0, enemyPrefabs.Length);
-
-    //    GameObject prefabToSpawn = enemyPrefabs[index]; //Так себе идея. Пример - 2 слота(обычный моб) 1 слот(большой моб) шансы - 2 к 1. 
-    //    Vector3 spawnPosition = LevelManager.main.startPoint.position;
-    //    spawnPosition.z = 0f;
-
-    //    GameObject enemy = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity); 
-    //    spawnedEnemies.Add(enemy);
-    //}
-
     private void SpawnEnemy()
     {
         GameObject[] enemiesForWave = GetEnemiesForCurrentWave();
@@ -192,17 +161,13 @@ public class EnemySpawner : MonoBehaviour
 
     private GameObject[] GetEnemiesForCurrentWave()
     {
-        switch (currentWave)
+        return currentWave switch
         {
-            case 1:
-                return wave1Enemies;
-            case 2:
-                return wave2Enemies;
-            case 3:
-                return wave3Enemies;
-            default:
-                return new GameObject[0];
-        }
+            1 => wave1Enemies,
+            2 => wave2Enemies,
+            3 => wave3Enemies,
+            _ => new GameObject[0],
+        };
     }
 
 
@@ -214,7 +179,6 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = false;
         timeSinceLastSpawn = 0f;
         currentWave++;
-        Debug.Log("WIn!");
     }
 
     public void GameOver()
@@ -225,7 +189,6 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = false;
         timeSinceLastSpawn = 0f;
         currentWave++;
-        Debug.Log("Lose!");
 
         // Удалить всех мобов с карты
         foreach (GameObject enemy in spawnedEnemies)

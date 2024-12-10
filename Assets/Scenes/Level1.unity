@@ -446,7 +446,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: eb56249a1f6bfc34b8efc14bda910865, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -614,7 +614,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 437312103
   m_SortingLayer: 4
-  m_SortingOrder: 6
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b5c9c9d5cac06a3488ef20327d950004, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1103,7 +1103,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ea5e9189b2de3ab4cb294efadfa7fddc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1636,7 +1636,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 437312103
   m_SortingLayer: 4
-  m_SortingOrder: 7
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 45b78f51e7f591a42b52807ba1be0a87, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2071,8 +2071,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1123554051
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ce69baecb2ae52a439b2c7c58cae30e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3626,7 +3626,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b5c9c9d5cac06a3488ef20327d950004, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4909,8 +4909,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1123554051
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ce69baecb2ae52a439b2c7c58cae30e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5110,7 +5110,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1198645890, guid: a4a8e40c0988b464d98a263e6c615d01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5362,7 +5362,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 51964ecb826f29d4ea54a466e1402375, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9835,10 +9835,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towers:
   - name: Basic Tower
-    cost: 50
+    cost: 20
     prefab: {fileID: 8445560699007186825, guid: 99763d40511a92644bbb8ba0bada36ff, type: 3}
   - name: Archer Tower
-    cost: 100
+    cost: 50
     prefab: {fileID: 8445560699007186825, guid: 762bffade78301b49b6fc9f0e6e2a345, type: 3}
   - name: Magic Tower
     cost: 200
@@ -9869,18 +9869,27 @@ MonoBehaviour:
   - {fileID: 591110500}
   - {fileID: 782718890}
   wave1Enemies:
-  - {fileID: 6094057151279691036, guid: 00dc477a27bdb3a4cab0d3ad6e74416a, type: 3}
   - {fileID: 8643097716682293928, guid: 16b964b2cee4b5b44bc49f02cd57fc86, type: 3}
+  - {fileID: 644865400445452428, guid: 0b7d9ffde7cfd2243b24ad4c19ead1de, type: 3}
   wave2Enemies:
-  - {fileID: 1639626422944887458, guid: 23419ae3e0cc5d149a1e220d26fb4693, type: 3}
-  wave3Enemies:
   - {fileID: 5564256563471534814, guid: c6fcc1f5e200286449e4f9421bf466e7, type: 3}
+  - {fileID: 5564256563471534814, guid: c6fcc1f5e200286449e4f9421bf466e7, type: 3}
+  - {fileID: 644865400445452428, guid: 0b7d9ffde7cfd2243b24ad4c19ead1de, type: 3}
+  - {fileID: 644865400445452428, guid: 0b7d9ffde7cfd2243b24ad4c19ead1de, type: 3}
+  - {fileID: 8643097716682293928, guid: 16b964b2cee4b5b44bc49f02cd57fc86, type: 3}
+  - {fileID: 8643097716682293928, guid: 16b964b2cee4b5b44bc49f02cd57fc86, type: 3}
+  wave3Enemies:
+  - {fileID: 8643097716682293928, guid: 16b964b2cee4b5b44bc49f02cd57fc86, type: 3}
+  - {fileID: 8643097716682293928, guid: 16b964b2cee4b5b44bc49f02cd57fc86, type: 3}
+  - {fileID: 8643097716682293928, guid: 16b964b2cee4b5b44bc49f02cd57fc86, type: 3}
+  - {fileID: 8643097716682293928, guid: 16b964b2cee4b5b44bc49f02cd57fc86, type: 3}
+  - {fileID: 6094057151279691036, guid: 00dc477a27bdb3a4cab0d3ad6e74416a, type: 3}
+  - {fileID: 6094057151279691036, guid: 00dc477a27bdb3a4cab0d3ad6e74416a, type: 3}
+  - {fileID: 6094057151279691036, guid: 00dc477a27bdb3a4cab0d3ad6e74416a, type: 3}
+  - {fileID: 6094057151279691036, guid: 00dc477a27bdb3a4cab0d3ad6e74416a, type: 3}
   totalWaves: 3
-  baseEnemies: 1
-  enemiesPerSecond: 0.5
-  timeBetweenWafes: 2
-  difficultyScalingFactor: 0
-  enemiesPerSecondCap: 15
+  enemiesPerSecond: 1
+  timeBetweenWafes: 3
   gameOverHover: {fileID: 729231202}
   victoryHover: {fileID: 950286066}
   currentWave: 1
@@ -9917,7 +9926,7 @@ MonoBehaviour:
   - {fileID: 2029053807}
   - {fileID: 1972184213}
   - {fileID: 1868551118}
-  currency: 7567
+  currency: 20
 --- !u!114 &1779517964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10099,8 +10108,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1123554051
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ce69baecb2ae52a439b2c7c58cae30e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -11258,8 +11267,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1123554051
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ce69baecb2ae52a439b2c7c58cae30e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -12062,10 +12071,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 106163590595933448, guid: 6724630b82542bb449454d76ed007739, type: 3}
+      propertyPath: m_text
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 106163590595933448, guid: 6724630b82542bb449454d76ed007739, type: 3}
+      propertyPath: m_fontSize
+      value: 22.95
+      objectReference: {fileID: 0}
     - target: {fileID: 236140066538357365, guid: 6724630b82542bb449454d76ed007739, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1779517964}
+    - target: {fileID: 494768782665685405, guid: 6724630b82542bb449454d76ed007739, type: 3}
+      propertyPath: m_text
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 762804187603705107, guid: 6724630b82542bb449454d76ed007739, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -12081,6 +12102,10 @@ PrefabInstance:
     - target: {fileID: 1790518246927756847, guid: 6724630b82542bb449454d76ed007739, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Level1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2735026201695457522, guid: 6724630b82542bb449454d76ed007739, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2993227131926988867, guid: 6724630b82542bb449454d76ed007739, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -12110,6 +12135,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1779517961}
+    - target: {fileID: 4637986633987428028, guid: 6724630b82542bb449454d76ed007739, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5067281743235082173, guid: 6724630b82542bb449454d76ed007739, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -12158,6 +12187,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1779517964}
+    - target: {fileID: 6940742877112538231, guid: 6724630b82542bb449454d76ed007739, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7075592795416281676, guid: 6724630b82542bb449454d76ed007739, type: 3}
       propertyPath: m_IsActive
       value: 0

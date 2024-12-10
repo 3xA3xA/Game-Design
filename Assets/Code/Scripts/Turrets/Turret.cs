@@ -31,6 +31,48 @@ public class Turret : MonoBehaviour
         buildManager = BuildManager.main;
     }
 
+    //private void Update()
+    //{
+    //    if (target == null)
+    //    {
+    //        FindTarget();
+    //        return;
+    //    }
+
+    //    RotateTowardsTarget();
+
+    //    if (!CheckTargetIsInRange())
+    //    {
+    //        target = null;
+    //    }
+    //    else
+    //    {
+    //        timeUntilFire += Time.deltaTime;
+
+    //        if (timeUntilFire >= 1f / bps)
+    //        {
+    //            Shoot();
+    //            timeUntilFire = 0f;
+    //        }
+
+    //        //Из-за обязательной инициализации башни через магазин костыль.
+    //        if (buildManager == null)
+    //            return;
+
+    //        // Проверяем индекс башни, чтобы замедлять врагов только если индекс равен 2
+    //        if (buildManager.selectedTower == 2)
+    //        {
+    //            timeUntilSlowmo += Time.deltaTime;
+
+    //            if (timeUntilSlowmo >= 1f / aps)
+    //            {
+    //                FreezeEnemies();
+    //                timeUntilSlowmo = 0f;
+    //            }
+    //        }
+    //    }
+    //}
+
     private void Update()
     {
         if (target == null)
@@ -59,8 +101,8 @@ public class Turret : MonoBehaviour
             if (buildManager == null)
                 return;
 
-            // Проверяем индекс башни, чтобы замедлять врагов только если индекс равен 2
-            if (buildManager.selectedTower == 2)
+            // Проверяем тег башни, чтобы замедлять врагов только если тег равен "MagicTower"
+            if (CompareTag("MagicTower"))
             {
                 timeUntilSlowmo += Time.deltaTime;
 
@@ -72,6 +114,7 @@ public class Turret : MonoBehaviour
             }
         }
     }
+
 
     private void Shoot()
     {
